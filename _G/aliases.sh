@@ -3,6 +3,7 @@
 alias       Gs='git status -uno'
 alias Gs__help='echo "Show status without untracked."'
 alias Ga='git add $(git ls-files -m)'
+alias Gc='git commit'
 alias Gdup='REF=$(git symbolic-ref HEAD); git log upstream/${REF##refs/heads/}..$REF'
 alias Gdfk='REF=$(git symbolic-ref HEAD); git log fork/${REF##refs/heads/}..$REF'
 alias Gpup='REF=$(git symbolic-ref HEAD); git push upstream $REF'
