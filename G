@@ -6,15 +6,17 @@ for childscript in `find $DIR/$NAME -name "*.sh"`; do
     source $childscript
 done
 
+echo -e "⇛ Git\n"
+
 echo "Aliases"
 for aka in `compgen -A alias G`; do
     [[ "$aka" == *__help ]] && continue
 
     HELP=$(eval "${aka}__help" 2> /dev/null)
     if [ -n "$HELP" ]; then
-        echo -e "  » $aka\n    $HELP\n"
+        echo -e "  » $aka\n    $HELP"
     else
-        echo -e "  » $aka\n"
+        echo "  » $aka"
     fi
 done
 
@@ -23,8 +25,8 @@ funs=$(compgen -A function G)
 for fun in `compgen -A function G`; do
     HELP=$(eval "${fun}__help" 2> /dev/null)
     if [ -n "$HELP" ]; then
-        echo -e "  » $fun\n    $HELP\n"
+        echo -e "  » $fun\n    $HELP"
     else
-        echo -e "  » $fun\n"
+        echo "  » $fun"
     fi
 done
