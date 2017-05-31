@@ -2,6 +2,10 @@
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 NAME="_$(basename "${BASH_SOURCE[0]}")"
 
+if [ "$0" == "${BASH_SOURCE[0]}" ]; then
+    exec /bin/bash -ic -- "source ${BASH_SOURCE[0]}"
+fi
+
 for childscript in `find $DIR/$NAME -name "*.sh"`; do
     source $childscript
 done
