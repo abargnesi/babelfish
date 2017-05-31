@@ -50,3 +50,16 @@ function Gaddbranch() {
 }
 alias Gaddbranch__help='echo "Add a new worktree for a new or existing branch."'
 export -f Gaddbranch
+
+function Glogbranch() {
+    if [ $# -gt 1 ]; then
+        >&2 echo "usage: Glogbranch [BASE_BRANCH]"
+        return 1
+    fi
+
+    [[ -z "$1" ]] && git log --first-parent --no-merges || git log --first-parent --no-merges "$1"..
+}
+alias Glogbranch__help='echo "Log commits for the evolution of this branch (optionally not reachable by base branch)."'
+export -f Glogbranch
+
+# vim: ts=4 sts=4 sw=4 expandtab

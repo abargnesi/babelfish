@@ -9,6 +9,9 @@ alias Ga__help='echo "Shortcut for: git add"'
 alias Gc='git commit'
 alias Gc__help='echo "Shortcut for: git commit"'
 
+alias Gac='git add $(git ls-files -m) && git commit'
+alias Gac__help='echo "Adds modified files to stage and commits."'
+
 alias Gdup='REF=$(git symbolic-ref HEAD); git log upstream/${REF##refs/heads/}..$REF'
 alias Gdup__help='echo "Show commits that exist here but not on upstream remote."'
 
