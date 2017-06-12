@@ -57,9 +57,20 @@ function Glogbranch() {
         return 1
     fi
 
-    [[ -z "$1" ]] && git log --first-parent --no-merges || git log --first-parent --no-merges "$1"..
+    [[ -z "$1" ]] && git log --stat --first-parent --no-merges || git log --stat --first-parent --no-merges "$1"..
 }
 alias Glogbranch__help='echo "Log commits for the evolution of this branch (optionally not reachable by base branch)."'
 export -f Glogbranch
+
+function Gundo() {
+    if [ $# -ne 1 ]; then
+        >&2 echo "usage: Gundo FILE_GLOB"
+        return 1
+    fi
+
+    git reset HEAD "$1" > /dev/null && git checkout "$1"
+}
+alias Gundo__help='echo "Undo changes made to file, effectively resetting to repository version."'
+export -f Gundo__help
 
 # vim: ts=4 sts=4 sw=4 expandtab
