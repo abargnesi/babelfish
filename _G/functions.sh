@@ -57,7 +57,7 @@ function Glogbranch() {
         return 1
     fi
 
-    [[ -z "$1" ]] && git log --stat --first-parent --no-merges || git log --stat --first-parent --no-merges "$1"..
+    [[ -z "$1" ]] && git log --stat --patch --first-parent --no-merges || git log --stat --patch --first-parent --no-merges "$1"..
 }
 alias Glogbranch__help='echo "Log commits for the evolution of this branch (optionally not reachable by base branch)."'
 export -f Glogbranch
@@ -72,5 +72,16 @@ function Gundo() {
 }
 alias Gundo__help='echo "Undo changes made to file, effectively resetting to repository version."'
 export -f Gundo__help
+
+function Gundoall() {
+    if [ $# -gt 0 ]; then
+        >&2 echo "usage: Gundoall"
+        return 1
+    fi
+
+    git reset HEAD . > /dev/null && git checkout .
+}
+alias Gundoall__help='echo "Undo changes made to all file in the working directory, effectively resetting to repository version."'
+export -f Gundoall__help
 
 # vim: ts=4 sts=4 sw=4 expandtab
