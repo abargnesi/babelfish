@@ -57,7 +57,7 @@ function Glogbranch() {
         return 1
     fi
 
-    [[ -z "$1" ]] && git log --stat --patch --first-parent --no-merges || git log --stat --patch --first-parent --no-merges "$1"..
+    [[ -z "$1" ]] && git log --stat --unified=10 --first-parent --no-merges || git log --stat --unified=10 --first-parent --no-merges "$1"..
 }
 alias Glogbranch__help='echo "Log commits for the evolution of this branch (optionally not reachable by base branch)."'
 export -f Glogbranch
