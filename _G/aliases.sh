@@ -39,5 +39,5 @@ alias Gds__help='echo "Show differences with staged files."'
 alias Gcoall='for x in `git ls-files -m`; do git checkout $x; done'
 alias Gcoall__help='echo "Checkout all modified files."'
 
-alias Glast='git show --name-only HEAD'
-alias Glast__help='echo "Show the last commit including the changed filepaths."'
+alias Glast='git show --stat --patch HEAD'
+alias Glast__help='echo "Show the last commit including the changed filepaths and patch."'
