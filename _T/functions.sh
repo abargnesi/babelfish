@@ -18,3 +18,16 @@ function Teverynth() {
 }
 alias Teverynth__help='echo "Print every nth line."'
 export -f Teverynth
+
+function Tcmp() {
+    file1=$1
+    file2=$2
+    fx=$3
+
+    res1=$(eval "$fx $1")
+    res2=$(eval "$fx $2")
+    echo -e "1st:\n${res1}"
+    echo -e "2nd:\n${res2}"
+}
+
+# vim: ts=4 sts=4 sw=4 expandtab
