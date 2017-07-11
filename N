@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+NAME="_$(basename "${BASH_SOURCE[0]}")"
+
+if [ "$0" == "${BASH_SOURCE[0]}" ]; then
+    exec /bin/bash -ic -- "source ${BASH_SOURCE[0]}"
+fi
+
+for childscript in `find $DIR/$NAME -name "*.sh"`; do
+    source $childscript
+done
+
+echo -e "⇛ Network\n"
+
+echo "Aliases"
+for aka in `compgen -A alias N`; do
+    [[ "$aka" == *__help ]] && continue
+
+    HELP=$(eval "${aka}__help" 2> /dev/null)
+    if [ -n "$HELP" ]; then
+        echo -e "  » $aka\n    $HELP"
+    else
+        echo "  » $aka"
+    fi
+done
+
+echo "Functions"
+funs=$(compgen -A function N)
+for fun in `compgen -A function N`; do
+    HELP=$(eval "${fun}__help" 2> /dev/null)
+    if [ -n "$HELP" ]; then
+        echo -e "  » $fun\n    $HELP"
+    else
+        echo "  » $fun"
+    fi
+done
