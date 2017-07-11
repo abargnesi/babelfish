@@ -3,6 +3,9 @@
 alias Gs='git status -uno'
 alias Gs__help='echo "Show status without untracked."'
 
+alias Gst='git status --verbose --branch'
+alias Gst__help='echo "Show full status."'
+
 alias Ga='git add $(git ls-files -m)'
 alias Ga__help='echo "Shortcut for: git add"'
 
