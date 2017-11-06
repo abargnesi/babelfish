@@ -21,6 +21,12 @@ alias Gdup__help='echo "Show commits that exist here but not on upstream remote.
 alias Gdfk='REF=$(git symbolic-ref HEAD); git log fork/${REF##refs/heads/}..$REF'
 alias Gdfk__help='echo "Show commits that exist here but not on fork remote."'
 
+alias Glog='git log --show-notes="*"'
+alias Glog__help='echo "Show commit log in reverse chronological order."'
+
+alias Gmu='mv $(git ls-files --others --exclude-standard)'
+alias Gmu__help='echo "Move untracked files to the given destination directory."'
+
 alias Gpup='REF=$(git symbolic-ref HEAD); git push upstream $REF'
 alias Gpup__help='echo "Push up commits to upstream remote."'
 
